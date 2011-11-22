@@ -28,4 +28,18 @@ then export the following environment variables for the target process:
 Some applications will crash, some will not. You will get interesting results
 based on whatever you do!
 
+What's done and not done
+------------------------
 
+Done:
+
+* Serial number hooking (MLB/Real)
+* Model identifier hooking
+* Telephony carrier hooks
+* Telephony modem service hooks
+* Lockdownd hacktivation
+
+Not done:
+
+* Siri activation (somewhat done actually)
+* Telephony IMEI/ICCID/IMSI dictionary hooks
