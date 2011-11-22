@@ -1,9 +1,0 @@
-#!/bin/sh
-arm-apple-darwin10-gcc-4.2.1 siri_auth.m -I. -dynamiclib -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -F../../siri/libraries/System/Library/PrivateFrameworks/  -c siri_auth.o -I include/ -I include/SAObjects/ -I include/Assistant
-arm-apple-darwin10-gcc-4.2.1 gestalt.c  -I. -fconstant-cfstrings -dynamiclib -o gestalt.o -Wall -multiply_defined suppress -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk  -c
-arm-apple-darwin10-gcc-4.2.1 iokit.c  -I. -fconstant-cfstrings -dynamiclib -o iokit.o -Wall -multiply_defined suppress -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -c
-arm-apple-darwin10-gcc-4.2.1 sysctl.c  -I. -fconstant-cfstrings -dynamiclib -o sysctl.o -Wall -multiply_defined suppress -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk  -c
-arm-apple-darwin10-gcc-4.2.1 telephony.c  -I. -fconstant-cfstrings -dynamiclib -o telephony.o -Wall -multiply_defined suppress -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -c 
-arm-apple-darwin10-gcc-4.2.1 lockdown.c  -I. -fconstant-cfstrings -dynamiclib -o lockdown.o -Wall -multiply_defined suppress -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -c 
-arm-apple-darwin10-gcc-4.2.1 *.o  -I. -fconstant-cfstrings -dynamiclib -o libVoodooGestalt.dylib -Wall -multiply_defined suppress -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk  /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/libMobileGestalt.dylib -framework IOKit -framework CoreTelephony -framework CoreFoundation -framework SAObjects  -lobjc -F../../siri/libraries/System/Library/PrivateFrameworks -framework Foundation -framework AppSupport /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/liblockdown.dylib
-ldid -S libVoodooGestalt.dylib

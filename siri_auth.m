@@ -14,6 +14,7 @@ Abstract:
 
 --*/
 
+#ifdef _HACKTIVATE_SIRI_
 
 #import "SACreateAssistant.h"
 #import "SALoadAssistant.h"
@@ -89,4 +90,6 @@ Abstract:
 }
 
 @end
+
+#endif
 
