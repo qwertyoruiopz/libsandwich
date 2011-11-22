@@ -6,14 +6,19 @@ LDID		:= ldid
 DYLIB		:= libsandwich.dylib
 
 libsandwich.dylib: $(OBJS)
-	$(ARM-CC) $(OBJS) $(ARM-LDCFLAGS) -o $(DYLIB)
-	$(LDID) -S $(DYLIB)
+	@echo Linking $(DYLIB)...
+	@$(ARM-CC) $(OBJS) $(ARM-LDCFLAGS) -o $(DYLIB)
+	@echo Fake-codesigning $(DYLIB)...
+	@$(LDID) -S $(DYLIB)
 
 %.o : %.m
-	$(ARM-CC) $(ARM-CFLAGS) -c $<
+	@echo Compiling $<
+	@$(ARM-CC) $(ARM-CFLAGS) -c $<
 
 %.o : %.c
-	$(ARM-CC) $(ARM-CFLAGS) -c $<
+	@echo Compiling $<
+	@$(ARM-CC) $(ARM-CFLAGS) -c $<
 
 clean:
-	rm $(DYLIB) $(OBJS)
+	@echo Deleting "$(DYLIB) $(OBJS)"...
+	@rm $(DYLIB) $(OBJS)
