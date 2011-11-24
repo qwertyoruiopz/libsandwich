@@ -25,6 +25,10 @@ Abstract:
 #include <stdio.h>
 #include <syslog.h>
 
+#include <deli/ipad.h>
+#include <deli/iphone.h>
+#include <deli/ipod.h>
+
 //
 // Configurable portion
 //
@@ -39,29 +43,6 @@ Abstract:
 #define IMEI             "010113006310121"
 #define ICCID            "310090521813935"
 #define IMSI             "8901090382521813935"
-
-#ifdef SETMODEL
-#ifdef IPOD
-#define MG_SERIAL       "C3WDF7LQDCP7"
-#define MODEL_STRING    "N81AP"
-#define DEVICE_NAME     "iPod"
-#define MACHINE_STRING  "iPod4,1"
-#define MG_MODEL        "MC918"
-#endif
-#ifdef IPHONE4S
-#define MG_SERIAL       "C35GJC8VDT9V"
-#define MODEL_STRING    "N94AP"
-#define DEVICE_NAME     "iPhone"
-#define MACHINE_STRING  "iPhone4,1"
-#define MG_MODEL        "MC918"
-#endif
-#else
-#define MG_SERIAL       "C35GJC8VDT9V"
-#define MODEL_STRING    "N94AP"
-#define DEVICE_NAME     "iPhone"
-#define MACHINE_STRING  "iPhone4,1"
-#define MG_MODEL        "MC918"
-#endif
 
 //
 // Do not edit anything below.
