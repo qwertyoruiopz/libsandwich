@@ -64,21 +64,20 @@ Return Value:
     // Do we handle these oids?
     //
     
-    if(!strcmp(name, "hw.model"))
-        strcpy(oldp, ModelData);
-    else if(!strcmp(name, "hw.machine")) 
-        strcpy(oldp, MachineData);
-    else
-        ReturnValue = pSysctlbyname((PCHAR)name, oldp, oldlenp, newp, newlen);
-        
-    //
-    // Strange bug, but it's hackfixed this way?
-    //
-    
-    if(!strcmp(name, "hw.model")) {
-        oldp = ModelData;
-    } else if(!strcmp(name, "hw.machine")) {
-        oldp = MachineData;
+    if(oldp && oldlenp) {
+        if(!strcmp(name, "hw.model")) {
+            strlcpy(oldp, ModelData, sizeof(ModelData));
+        } else if(!strcmp(name, "hw.machine")) {
+            strlcpy(oldp, MachineData, sizeof(ModelData));
+        }
+    } else if(!oldp && oldlenp) {
+        if(!strcmp(name, "hw.model")) {
+            *oldlenp = sizeof(ModelData);
+        } else if(!strcmp(name, "hw.machine")) {
+            *oldlenp = sizeof(MachineData);
+        }
+    } else {
+        ReturnValue = pSysctlbyname(name, oldp, oldlenp, newp, newlen);
     }
 
     return ReturnValue;

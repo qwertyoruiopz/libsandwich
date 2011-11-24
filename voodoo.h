@@ -121,11 +121,11 @@ CFTypeRef
 typedef
 INT
 (*PSYSCTL_BY_NAME)(
-    __in CONST PCHAR Name,
-    __out PVOID OldP,
-    __in SIZE_T *LengthOfOldp,
-    __in PVOID NewP,
-    __in SIZE_T LengthOfNewp
+    __in const char *name,
+    __in void *oldp,
+    __in size_t *oldlenp,
+    __in void *newp,
+    __in size_t newlen
     );
     
 typedef
