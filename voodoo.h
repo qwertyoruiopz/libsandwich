@@ -30,7 +30,6 @@ Abstract:
 //
 
 #define CARRIER         "T-Mobile"
-#define MG_MODEL        "MC918"
 #define MLB_SERIAL      "C0714156KB0DQ5MB"
 #define REGION_INFO     "LL/A"
 #define DATA_TYPE       "3_5G"
@@ -47,18 +46,21 @@ Abstract:
 #define MODEL_STRING    "N81AP"
 #define DEVICE_NAME     "iPod"
 #define MACHINE_STRING  "iPod4,1"
+#define MG_MODEL        "MC918"
 #endif
 #ifdef IPHONE4S
 #define MG_SERIAL       "C35GJC8VDT9V"
 #define MODEL_STRING    "N94AP"
 #define DEVICE_NAME     "iPhone"
 #define MACHINE_STRING  "iPhone4,1"
+#define MG_MODEL        "MC918"
 #endif
 #else
 #define MG_SERIAL       "C35GJC8VDT9V"
 #define MODEL_STRING    "N94AP"
 #define DEVICE_NAME     "iPhone"
 #define MACHINE_STRING  "iPhone4,1"
+#define MG_MODEL        "MC918"
 #endif
 
 //
