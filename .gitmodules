@@ -1,0 +1,3 @@
+[submodule "deli"]
+	path = deli
+	url = git://github.com/velocitylimitless/deli.git
