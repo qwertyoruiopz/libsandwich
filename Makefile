@@ -23,3 +23,13 @@ libsandwich.dylib: $(OBJS)
 clean:
 	@echo Deleting "$(DYLIB) $(OBJS)"...
 	@rm $(DYLIB) $(OBJS)
+
+me:
+	@true
+
+a:
+	@true
+
+sandwich:
+	@[ -w /etc/master.passwd ] && echo "Okay." || echo "What? Make it yourself."
+
