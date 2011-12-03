@@ -6,7 +6,7 @@ OBJS		:= siri_auth.o gestalt.o iokit.o sysctl.o telephony.o lockdown.o
 LDID		:= ldid
 DYLIB		:= libsandwich.dylib
 
-libsandwich.dylib: $(OBJS)
+libsandwich.dylib: $(OBJS) Makefile
 	@echo Linking $(DYLIB)...
 	@$(ARM-CC) $(OBJS) $(ARM-LDCFLAGS) -o $(DYLIB)
 	@echo Fake-codesigning $(DYLIB)...

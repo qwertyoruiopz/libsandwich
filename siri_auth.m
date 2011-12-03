@@ -14,6 +14,8 @@ Abstract:
 
 --*/
 
+#define _HACKTIVATE_SIRI_
+
 #ifdef _HACKTIVATE_SIRI_
 
 #import "SACreateAssistant.h"
@@ -22,6 +24,9 @@ Abstract:
 
 @class NSString, NSData;
 
+
+
+
 //
 // Override method interface
 //
@@ -29,6 +34,8 @@ Abstract:
 @interface SACreateAssistant(Override)
 -(void) setValidationData:(NSData *) _data;
 @end
+
+
 
 //
 // Actual code.
@@ -41,16 +48,21 @@ Abstract:
 }
 
 -(void) setValidationData:(NSData *) _data; {
-    unsigned char validationData[] = { /* data here, replace 0 */ 0 };
+    NSError *error;    
+    NSData * tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
+    NSPropertyListFormat plistFormat;
+    NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:&plistFormat error:&error];
+    NSData *validationData = [temp valueForKey:@"ValidationData"];
+    
     NSLog(@"%@",[NSThread callStackSymbols]);
     NSLog(@"%@",[NSThread callStackReturnAddresses]);
     NSLog(@"current session validation data: %@", _data);
-    
-    NSData *cocoa_ValidationData = [NSData dataWithBytes:validationData length:sizeof(validationData)];
-    
-    [self setProperty:[cocoa_ValidationData copy] forKey:@"validationData"];
 
-    [cocoa_ValidationData release];
+    [self setProperty:[validationData copy] forKey:@"validationData"];
+
+    [validationData release];
+    [temp release];
+    [tempData release];
     [_data release];
 }
 
@@ -76,16 +88,21 @@ Abstract:
 }
 
 -(void) setSessionValidationData:(NSData *) _data; {
-    unsigned char validationData[] = { /* data here, replace 0 */ 0 };
+    NSError *error;    
+    NSData * tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
+    NSPropertyListFormat plistFormat;
+    NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:&plistFormat error:&error];
+    NSData *validationData = [temp valueForKey:@"ValidationData"];
+    
     NSLog(@"%@",[NSThread callStackSymbols]);
     NSLog(@"%@",[NSThread callStackReturnAddresses]);
     NSLog(@"current session validation data: %@", _data);
-    
-    NSData *cocoa_ValidationData = [NSData dataWithBytes:validationData length:sizeof(validationData)];
-    
-    [self setProperty:[cocoa_ValidationData copy] forKey:@"sessionValidationData"];
 
-    [cocoa_ValidationData release];
+    [self setProperty:[validationData copy] forKey:@"validationData"];
+
+    [validationData release];
+    [temp release];
+    [tempData release];
     [_data release];
 }
 

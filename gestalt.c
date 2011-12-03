@@ -17,6 +17,8 @@ Abstract:
 #include <voodoo.h>
 
 PMG_COPY_ANSWER_ROUTINE pMGCopyAnswer;
+CFBooleanRef kGSMultitaskingGesturesDefaultOffCapability;
+
 
 CFTypeRef
 MGCopyAnswer(
