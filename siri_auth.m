@@ -24,9 +24,6 @@ Abstract:
 
 @class NSString, NSData;
 
-
-
-
 //
 // Override method interface
 //
@@ -34,8 +31,6 @@ Abstract:
 @interface SACreateAssistant(Override)
 -(void) setValidationData:(NSData *) _data;
 @end
-
-
 
 //
 // Actual code.
@@ -49,20 +44,19 @@ Abstract:
 
 -(void) setValidationData:(NSData *) _data; {
     NSError *error;    
-    NSData * tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
+    NSData *tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
     NSPropertyListFormat plistFormat;
-    NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:&plistFormat error:&error];
-    NSData *validationData = [temp valueForKey:@"ValidationData"];
+    NSDictionary *temp = [[NSPropertyListSerialization alloc] propertyListWithData:tempData options:NSPropertyListImmutable format:&plistFormat error:&error];
+    NSData *_validationData = [[NSData alloc] initWithData:[temp valueForKey:@"ValidationData"]];
     
-    NSLog(@"%@",[NSThread callStackSymbols]);
-    NSLog(@"%@",[NSThread callStackReturnAddresses]);
-    NSLog(@"current session validation data: %@", _data);
+    NSLog(@"passed data: %@", _data);
+    NSLog(@"current session validation data: %@", _validationData);
 
-    [self setProperty:[validationData copy] forKey:@"validationData"];
+    [_validationData retain];
 
-    [validationData release];
+    [self setProperty:[_validationData copy] forKey:@"validationData"];
+    [_validationData release];
     [temp release];
-    [tempData release];
     [_data release];
 }
 
@@ -89,23 +83,21 @@ Abstract:
 
 -(void) setSessionValidationData:(NSData *) _data; {
     NSError *error;    
-    NSData * tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
+    NSData *tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
     NSPropertyListFormat plistFormat;
     NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:&plistFormat error:&error];
-    NSData *validationData = [temp valueForKey:@"ValidationData"];
+    NSData *_validationData = [[NSData alloc] initWithData:[temp valueForKey:@"ValidationData"]];
     
-    NSLog(@"%@",[NSThread callStackSymbols]);
-    NSLog(@"%@",[NSThread callStackReturnAddresses]);
-    NSLog(@"current session validation data: %@", _data);
+    NSLog(@"passed data: %@", _data);
+    NSLog(@"current session validation data: %@", _validationData);
 
-    [self setProperty:[validationData copy] forKey:@"validationData"];
+    [_validationData retain];
 
-    [validationData release];
+    [self setProperty:[_validationData copy] forKey:@"sessionValidationData"];
+    [_validationData release];
     [temp release];
-    [tempData release];
     [_data release];
 }
-
 @end
 
 #endif
