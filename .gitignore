@@ -1,3 +1,5 @@
 *.o
 *.dylib
 binaries/
+
+libsandwich.dylib.zip
