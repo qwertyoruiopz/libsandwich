@@ -30,11 +30,14 @@ Second, you will need to modify the plist files to include the DYLD_INSERT_LIBRA
 assistant_services.
 
 Third, you will need to get the sessionValidationData member from a 4S using applidium's siri server
-or any generic SSL MITM proxy, and then put a hex dump in siri_auth.m (don't forget to define what's
-necessary!), then put all the necessary GUIDs in /var/mobile/Library/Preferences/com.apple.assistant.plist.
-Compile lib sandwich and place the dylib in /usr/lib!
+or any generic SSL MITM proxy, and then put a hex dump in com.vlo.libsandwich.plist 
+(don't forget to define what's necessary!), then put all the necessary GUIDs in /var/mobile/Library/Preferences/com.apple.assistant.plist. com.vlo.libsandwich.plist  goes in /var/mobile/Library/Preferences/ also. convertValidationData.rb may help :)
+
+Compile libsandwich and place the dylib in /usr/lib!
 
 Kill springboard and start the daemons, that should be it.
+
+PS: Don't forget the GL driver, you may want it.
 
 Thanks!
 Velocity Limitless

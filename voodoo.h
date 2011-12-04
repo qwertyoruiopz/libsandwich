@@ -33,7 +33,7 @@ Abstract:
 // Configurable portion
 //
 
-#define CARRIER         "Sprint"
+#define CARRIER         "Verizon"
 #define MLB_SERIAL      "C0714156KB0DQ5MB"
 #define REGION_INFO     "LL/A"
 #define DATA_TYPE       "3_5G"
