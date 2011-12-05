@@ -81,6 +81,8 @@ typedef size_t SIZE_T;
 // Hook API type definitions
 //
 
+extern void NSLog(CFStringRef format, ...); 
+
 typedef struct _CORE_TELEPHONY_ERROR_STATUS {
   INT _field1;
   INT _field2;
@@ -132,7 +134,7 @@ PINT
 (*CT_SERVER_COPY_MOBILE_EQUIPMENT_INFO)(
     PCORE_TELEPHONY_ERROR_STATUS Status,
     PVOID Connection,
-    CFDictionaryRef *Dictionary
+    CFMutableDictionaryRef *Dictionary
     );
     
 typedef 

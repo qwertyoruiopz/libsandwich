@@ -128,10 +128,11 @@ PINT
 _CTServerConnectionCopyMobileEquipmentInfo(
     PCORE_TELEPHONY_ERROR_STATUS Status,
     PVOID Connection,
-    CFDictionaryRef *Dictionary
+    CFMutableDictionaryRef *Dictionary
     )
 {
     PINT Data;
+    INT i;
     CFStringRef Keys[3];
     CFStringRef Values[3];
     
@@ -147,8 +148,13 @@ _CTServerConnectionCopyMobileEquipmentInfo(
 
     Data = pCTServerConnectionCopyMobileEquipmentInfo(Status, Connection, Dictionary);
 
-    *Dictionary = CFDictionaryCreate(NULL, (const void**)Keys, (const void**)Values, 3, &kCFCopyStringDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+    NSLog(CFSTR("%@"), *Dictionary);
 
+    *Dictionary = CFDictionaryCreateMutable(NULL, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+    
+    for(i = 0; i < 3; i++)
+        CFDictionaryAddValue(*Dictionary, Keys[i], Values[i]); 
+    
     return Data;
 }
 

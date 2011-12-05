@@ -47,6 +47,8 @@ Return Value:
     CONST UInt8 ModelBuffer[32] = MG_MODEL;
     CONST UInt8 MachineBuffer[9] = MODEL_STRING;
     CONST UInt8 MlbSerialBuffer[16] = MLB_SERIAL;
+    CONST UInt8 UniqueChipId[8] = { 0x8e, 0xf5, 0x0c, 0x20, 0xec, 0x02, 0x00, 0x00};
+    CONST UInt8 DieId[8] = {0x00, 0x61, 0x97, 0x8d, 0xd6, 0x47, 0x2e, 0x2d};
     CFStringRef SerialNumber = CFSTR(MG_SERIAL);
     CFDataRef DataValue;
     
@@ -69,6 +71,12 @@ Return Value:
         return DataValue;
     } else if(!CFStringCompare(Key, CFSTR("mlb-serial-number"), 0)) {
         DataValue = CFDataCreate(kCFAllocatorDefault, MlbSerialBuffer, 16);
+        return DataValue;
+    } else if(!CFStringCompare(Key, CFSTR("die-id"), 0)) {
+        DataValue = CFDataCreate(kCFAllocatorDefault, DieId, 8);
+        return DataValue;
+    } else if(!CFStringCompare(Key, CFSTR("unique-chip-id"), 0)) {
+        DataValue = CFDataCreate(kCFAllocatorDefault, UniqueChipId, 8);
         return DataValue;
     } else if(!CFStringCompare(Key, CFSTR("IOPlatformSerialNumber"), 0)) {
         return SerialNumber;

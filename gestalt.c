@@ -18,7 +18,7 @@ Abstract:
 
 PMG_COPY_ANSWER_ROUTINE pMGCopyAnswer;
 CFBooleanRef kGSMultitaskingGesturesDefaultOffCapability;
-
+CFTypeRef PSDefaultAssistantLanguage;
 
 CFTypeRef
 MGCopyAnswer(
