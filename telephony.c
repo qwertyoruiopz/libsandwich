@@ -48,12 +48,15 @@ CTRegistrationCopyAbbreviatedOperatorName(
     return CFSTR(CARRIER);
 }
 
-INT
+CFNumberRef
 CTGetSignalStrength(
     VOID
     )
 {
-    return SIGNAL_STRENGTH;
+    INT SignalStrength[3] = {2, -100, 20};
+    INT Parameter2 = 20;
+    
+    return CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &Parameter2);
 }
 
 CFStringRef
@@ -61,7 +64,7 @@ CTRegistrationGetStatus(
     VOID
     )
 {
-    return CFSTR("kCTRegistrationStatusRegisteredHome");
+    return CFSTR("kCTRegistrationStatusDenied");
 }
 
 CFStringRef
@@ -80,6 +83,10 @@ CTSettingCopyMyPhoneNumber(
     return CFSTR("972-364-4415");
 }
 
+CFNumberRef kCTIndicatorsGradedSignalStrength;
+CFNumberRef kCTIndicatorsSignalStrength;
+CFNumberRef kCTIndicatorsRawSignalStrength;
+
 CFNumberRef
 CTIndicatorsGetSignalStrength(
     __in INT Parameter1,
@@ -87,8 +94,14 @@ CTIndicatorsGetSignalStrength(
     __in INT Parameter3
     )
 {
-    Parameter2 = SIGNAL_STRENGTH;
-    return CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt8Type, &Parameter2);
+    INT SignalStrength[3] = {2, -100, 20};
+    Parameter2 = 20;
+    
+    kCTIndicatorsGradedSignalStrength = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &SignalStrength[0]);
+    kCTIndicatorsSignalStrength = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &SignalStrength[1]);
+    kCTIndicatorsRawSignalStrength = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &SignalStrength[2]);
+    
+    return CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &Parameter2);
 }
 
 CFStringRef
