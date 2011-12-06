@@ -43,21 +43,13 @@ Abstract:
 }
 
 -(void) setValidationData:(NSData *) _data; {
-    NSError *error;    
-    NSData *tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
-    NSPropertyListFormat plistFormat;
-    NSDictionary *temp = [[NSPropertyListSerialization alloc] propertyListWithData:tempData options:NSPropertyListImmutable format:&plistFormat error:&error];
-    NSData *_validationData = [[NSData alloc] initWithData:[temp valueForKey:@"ValidationData"]];
-    
+    NSLog(@"LOL WUT");
+    NSDictionary* omgDictionary=[[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"]; 
+    NSData *_validationData = [omgDictionary objectForKey:@"ValidationData"];
     NSLog(@"passed data: %@", _data);
     NSLog(@"current session validation data: %@", _validationData);
-
-    [_validationData retain];
-
-    [self setProperty:[_validationData copy] forKey:@"validationData"];
-    [_validationData release];
-    [temp release];
-    [_data release];
+    [self setProperty:[_validationData retain] forKey:@"validationData"];
+    [omgDictionary release];
 }
 
 @end
@@ -82,21 +74,13 @@ Abstract:
 }
 
 -(void) setSessionValidationData:(NSData *) _data; {
-    NSError *error;    
-    NSData *tempData = [[NSData alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"];
-    NSPropertyListFormat plistFormat;
-    NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:tempData options:NSPropertyListImmutable format:&plistFormat error:&error];
-    NSData *_validationData = [[NSData alloc] initWithData:[temp valueForKey:@"ValidationData"]];
-    
+    NSLog(@"LOL WUT");
+    NSDictionary* omgDictionary=[[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.vlo.libsandwich.plist"]; 
+    NSData *_validationData = [omgDictionary objectForKey:@"ValidationData"];
     NSLog(@"passed data: %@", _data);
     NSLog(@"current session validation data: %@", _validationData);
-
-    [_validationData retain];
-
-    [self setProperty:[_validationData copy] forKey:@"sessionValidationData"];
-    [_validationData release];
-    [temp release];
-    [_data release];
+    [self setProperty:[_validationData retain] forKey:@"sessionValidationData"];
+    [omgDictionary release];
 }
 @end
 
